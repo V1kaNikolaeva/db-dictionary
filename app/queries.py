@@ -15,12 +15,18 @@ class Controller():
         db.close_connection(self.connection)
 
     def create_table(self, *args: str, name: str):
-        pass
+        print(*args, name)
 
     def create_db(self, name: str):
         self.cursor.execute(f'CREATE DATABASE {name}')
 
     def create_record(self, *args, table_name):
         pass
+
+    def get_records(self, table):
+        self.cursor.execute(f'SELECT * FROM {table}')
+        rows = self.cursor.fetchall()
+        for row in rows:
+            print(row)
 
 
