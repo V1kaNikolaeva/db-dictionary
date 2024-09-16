@@ -1,4 +1,4 @@
-import db
+from db import Singleton
 
 
 class Controller():
@@ -8,11 +8,11 @@ class Controller():
         self.cursor = None  
 
     def connect(self):
-        self.connection = db.connect(self.config)
+        self.connection = Singleton.connect(self.config)
         self.cursor = self.connection.cursor(dictionary=True)
 
     def close_connection(self):
-        db.close_connection(self.connection)
+        Singleton.close_connection(self.connection)
 
     def create_table(self, *args: str, name: str):
         print(*args, name)

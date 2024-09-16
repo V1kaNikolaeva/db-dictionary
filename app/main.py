@@ -37,14 +37,16 @@ def main():
                 connection = queries.Controller(config=config)
                 connection.connect()
 
-    connection.close_connection()
 
     print('\nВыход (exit)\n' +
             '1. create_table (создать таблицу) column_name type length -> column_name type length... -> table_name\n' +
-            '2. add_row (добавить строку в таблицу)\n')
+            '2. add_row (добавить строку в таблицу)\n' +
+            '2. get table_name (получить все строки)\n')
+    
     while True:
         command = input()
         if command == 'EXIT' or command == 'exit':
+            connection.close_connection()
             break
         else:
             if command == 'create_table':
@@ -53,6 +55,8 @@ def main():
                 connection.create_table('id', 'word', 'translate', name='new_table')
                 print('-> created')
             elif command == 'add_row':
+                print('aa')
+            elif command == 'get':
                 print('aa')
             else:
                 print('-> Неизвестная команда')
